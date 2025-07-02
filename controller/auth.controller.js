@@ -1,18 +1,19 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { generateToken } from "../middleware/auth";
 
-export const userRegister = async (req, res) => {
+export const registerUser = async (req, res) => {
   try {
-    const { fullName, companyName, email, password, role } = req.body;
-
-    const name = fullName ? fullName : companyName;
+    const { name, password, role, contactPerson } = req.body;
+    const email = req.body.trim().toLowerCase();
 
     if (!name || !email || !password) {
-      return res.status(400).json({ error: "Alle Felder sind erforderlich." });
+      res.status(400).json({ error: "Alle Felder sind erforderlich." });
+      return;
     }
 
     const existingUser = await UserModel.findOne({
-      email: email.trim().toLowerCase(),
+      email,
     });
     if (existingUser) {
       res.status(409).json({ error: "E-Mail ist bereits registriert." });
@@ -23,15 +24,14 @@ export const userRegister = async (req, res) => {
     const hashedPW = await bcrypt.hash(password, saltRounds);
 
     const user = await UserModel.create({
-      username,
+      name,
       email,
       password: hashedPW,
       role,
+      contactPerson,
     });
 
     const verificationToken = generateToken(user, "30m");
-
-    sendVerificationMail(email, verificationToken);
 
     res.status(201).json({
       message: "Registrierung erfolgreich.",
