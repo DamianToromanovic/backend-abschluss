@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { generateToken } from "../middleware/auth";
+import { generateToken } from "../middleware/auth.middleware";
 
 export const registerUser = async (req, res) => {
   try {
@@ -42,7 +42,7 @@ export const registerUser = async (req, res) => {
   }
 };
 
-export const userVerify = async (req, res, next) => {
+export const verifyUser = async (req, res, next) => {
   const { token } = req.query;
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
@@ -77,7 +77,7 @@ export const userVerify = async (req, res, next) => {
   }
 };
 
-export const userLogin = async (req, res) => {
+export const loginUser = async (req, res) => {
   const { email, password, authMethod } = req.body;
 
   // in einem select können nur positive Felder stehen .select("username +passwort")
