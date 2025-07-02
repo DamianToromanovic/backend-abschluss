@@ -3,6 +3,9 @@ import { isCompany } from "../middleware/role.middleware";
 
 const router = express.Router();
 
-router.get("/", isCompany, addJob);
+router.get("/", isCompany, getJobs);
+router.post("/", isCompany, addJob);
+router.patch("/:id", isCompany, updateJob);
+router.delete("/:id", isCompany, deleteJob);
 
 export default router;
