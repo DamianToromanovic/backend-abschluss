@@ -1,9 +1,10 @@
-import User from "../models/userSchema";
+import User from "../models/userSchema.js";
+import db from "./db.js";
 
 await db.connect();
 await User.deleteMany({});
 
-const mockUsers = [
+const sampleUsers = [
   {
     name: "ABCcompany",
     email: "abccompany@example.com",
@@ -48,6 +49,6 @@ const mockUsers = [
   },
 ];
 
-await User.insertMany(mockUsers);
-console.log("Mock users inserted");
+await User.insertMany(sampleUsers);
+console.log("Sample users inserted");
 await db.close();
