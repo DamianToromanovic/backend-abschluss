@@ -8,7 +8,7 @@ export const getJobs = async (req, res) => {
   }
 
   try {
-    const allJobs = await Job.findMany({ companyId: userId });
+    const allJobs = await Job.find({ companyId: userId });
     res.status(201).json(allJobs);
   } catch (error) {
     res.status(500).json({ message: "getting jobs failed" });
