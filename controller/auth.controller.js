@@ -1,6 +1,6 @@
-import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { generateToken } from "../middleware/auth.middleware";
+import { generateToken } from "../middleware/auth.middleware.js";
 
 export const registerUser = async (req, res) => {
   try {

@@ -1,6 +1,6 @@
 import express from "express";
-import { getJobs } from "../controller/company.controller";
-import { getAllFiltered } from "../controller/applicant.controller";
+import { getJobs } from "../controller/company.controller.js";
+import { getAllFiltered } from "../controller/applicant.controller.js";
 
 const router = express.Router();
 
