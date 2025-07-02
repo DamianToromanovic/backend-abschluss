@@ -1,3 +1,4 @@
+import { application } from "express";
 import mongoose from "mongoose";
 
 const jobSchema = mongoose.Schema({
@@ -20,6 +21,10 @@ const jobSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "users",
     required: [true, "Company reference is required"],
+  },
+  applicantId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "users",
   },
 });
 
