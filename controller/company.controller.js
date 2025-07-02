@@ -1,5 +1,20 @@
 import Job from "../models/jobSchema.js";
 
+export const getJobs = async (req, res) => {
+  const userId = req.user.userId;
+
+  if (!userId) {
+    res.status(401).json({ message: "unauthorized" });
+  }
+
+  try {
+    const allJobs = await Job.findMany({ companyId: userId });
+    res.status(201).json(allJobs);
+  } catch (error) {
+    res.status(500).json({ message: "getting jobs failed" });
+  }
+};
+
 export const addJob = async (req, res) => {
   const userId = req.user.userId;
 
@@ -69,6 +84,6 @@ export const deleteJob = async (req, res) => {
     const deletedJob = await Job.findByIdAndDelete(jobId);
     res.status(201).json(deletedJob);
   } catch (error) {
-    console.error("Error deleting job", error);
+    res.status(500).json({ message: "deleting job failed" });
   }
 };
