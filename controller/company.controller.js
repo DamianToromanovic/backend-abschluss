@@ -68,12 +68,12 @@ export const updateJob = async (req, res) => {
     dataToUpdate.shortDescription = shortDescription;
 
   try {
-    const updatedJob = await Job.findByIdAndUpdate(
+    const jobToUpdate = await Job.findByIdAndUpdate(
       { companyId: userId },
       dataToUpdate,
       { new: true }
     );
-    res.status(201).json(updatedJob);
+    res.status(201).json(jobToUpdate);
   } catch (error) {
     res.status(500).json({ message: "updating job failed" });
   }
