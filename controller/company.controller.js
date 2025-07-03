@@ -8,9 +8,13 @@ export const getJobs = async (req, res) => {
   }
 
   try {
-    const allJobs = await Job.find({ companyId: userId });
+    const allJobs = await Job.find({ companyId: userId }).populate(
+      "applicants",
+      "name email"
+    );
     res.status(201).json(allJobs);
   } catch (error) {
+    console.error("Fehler beim Holen der Jobs:", error);
     res.status(500).json({ message: "getting jobs failed" });
   }
 };

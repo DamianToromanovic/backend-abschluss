@@ -50,7 +50,7 @@ Hinweis: Wir sehen die Cookies und dadurch auch das JWT nicht! Aber VS- Code spe
    - Bei den angezeigten Jobs soll der Username und die E-Mail Adresse der Bewerber zu sehen sein ------check
    - Das ganze soll über die UserID geladen werden!
 
-## Stellenanzeigen (User) -----check
+## Stellenanzeigen (User)
 
 1. loadAll - Zeige alle offenen Stellenanzeigen an
 2. loadFiltered - Zeige alle offenen Stellenanzeigen an, die 'react' im Titel haben

@@ -21,12 +21,12 @@ const jobSchema = mongoose.Schema({
   },
   companyId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "users",
+    ref: "User",
     // required: [true, "Company reference is required"],
   },
-  applicantId: {
+  applicants: {
     type: [mongoose.Schema.Types.ObjectId],
-    ref: "users",
+    ref: "User",
   },
 });
 
