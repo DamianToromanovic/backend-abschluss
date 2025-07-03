@@ -25,8 +25,11 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY2M2M0MTE4ZWZkOGI5M2JjNjUyZGUiLCJyb2xlIjoiY29tcGFueSIsImlhdCI6MTc1MTUzMzI5OSwiZXhwIjoxNzUxNTQwNDk5fQ.60kegCxykd-LX9-z9zeJttkNdJyoC2KurEf67FNiuS4
 
 {
-  "title": "Software Engineer",
-  "shortDescription": "Entwicklung von Webanwendungen"
+  "title": "Frontend Developer",
+  "shortDescription": "We are looking for a Frontend Developer to join our team.",
+  "longDescription": "As a Frontend Developer, you will be responsible for building user interfaces and ensuring a seamless user experience. You will work closely with designers and backend developers to create responsive and interactive web applications.",
+  "skills": ["JavaScript", "React", "HTML", "CSS"],
+  "offers": ["Remote work", "Health insurance", "Gym membership"]
 }
 
 
