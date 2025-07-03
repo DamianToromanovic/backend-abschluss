@@ -1,9 +1,10 @@
 import express from "express";
-import { getJobs } from "../controller/company.controller.js";
-import { getAllFiltered } from "../controller/applicant.controller.js";
+
+import { getAllFiltered, getJobs } from "../controller/applicant.controller.js";
+import { verifyToken } from "../middleware/auth.middleware.js";
 
 const router = express.Router();
 
-router.get("/", getJobs);
-router.get("/filter", getAllFiltered);
+router.get("",verifyToken, getJobs);
+router.get("/filter",verifyToken, getAllFiltered);
 export default router;

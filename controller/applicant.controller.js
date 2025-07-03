@@ -26,7 +26,9 @@ export const getAllFiltered = async (req, res) => {
   }
 
   try {
-    const filteredJobs = await Job.find({ title: "react" });
+    const filteredJobs = await Job.find({
+      title: { $regex: title, $options: "i" },
+    });
 
     if (!filteredJobs) {
       res.status(404).json({ message: "Go and learn C#" });

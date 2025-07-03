@@ -12,6 +12,18 @@ export const registerUser = async (req, res) => {
       res.status(400).json({ error: "Alle Felder sind erforderlich." });
       return;
     }
+    if (
+      password.length < 10 ||
+      !password.match(/[A-Z]/) ||
+      !password.match(/[a-z]/) ||
+      !password.match(/[\W_]/)
+    ) {
+      res.status(400).json({
+        error:
+          "The password should be at least 10 characters long, contain at least one uppercase letter, one lowercase letter, and one special character.",
+      });
+      return;
+    }
 
     const existingUser = await User.findOne({
       email,
@@ -25,7 +37,7 @@ export const registerUser = async (req, res) => {
     const hashedPW = await bcrypt.hash(password, saltRounds);
 
     const user = await User.create({
-      name,
+      name: name.trim(),
       email,
       password: hashedPW,
       role,

@@ -12,7 +12,7 @@ const router = express.Router();
 
 router.get("", verifyToken, isCompany, getJobs);
 router.post("", verifyToken, isCompany, addJob);
-router.patch("/:id", verifyToken, isCompany, updateJob);
+router.patch("/:id", verifyToken, isCompany, updateJob); // check
 router.delete("/:id", verifyToken, isCompany, deleteJob);
 
 export default router;
