@@ -13,18 +13,20 @@ const jobSchema = mongoose.Schema({
   longDescription: {
     type: String,
   },
-  skills: { type: String },
+  skills: {
+    type: [String],
+  },
   offers: {
-    type: String,
+    type: [String],
   },
   companyId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "users",
-    required: [true, "Company reference is required"],
+    ref: "User",
+    // required: [true, "Company reference is required"],
   },
-  applicantId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "users",
+  applicants: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: "User",
   },
 });
 

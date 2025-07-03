@@ -6,18 +6,65 @@ POST http://localhost:5000/api/auth/register HTTP/1.1
 Content-Type: application/json
 
 {
-  "name": "Damian",
-  "password": "Abcdefg1234!!!",
-  "role": "applicant",
-  "email": "g.dpie@fe.de" 
+  "name": "Company 4",
+  "password": "Abcdeddd52621!!!!",
+  "role": "company",
+  "email": "company4@web.de" 
 }
 ###
 POST http://localhost:5000/api/auth/login HTTP/1.1
 Content-Type: application/json
 
 {
-  "email": "g.dpie@fe.de",
-  "password": "Abcdefg1234!!!"
+  "email": "company4@web.de",
+  "password": "Abcdeddd52621!!!!"
 }
+###
+POST http://localhost:5000/api/company HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY2NzY3NzE2NmQ0NmI1YTUxMjdjZjciLCJyb2xlIjoiY29tcGFueSIsImlhdCI6MTc1MTU0NTQ2NywiZXhwIjoxNzUxNTg4NjY3fQ.v9uQadOd-Ih5C_R3ZkMfEWuwJtyJuPj_43274OD1Ic8
+
+{
+  "title": "React Developer",
+  "shortDescription": "We are looking for a Frontend Developer to join our team.",
+  "longDescription": "As a Frontend Developer, you will be responsible for building user interfaces and ensuring a seamless user experience. You will work closely with designers and backend developers to create responsive and interactive web applications.",
+  "skills": ["JavaScript", "React", "HTML", "CSS"],
+  "offers": ["Remote work", "Health insurance", "Gym membership"]
+}
+
+###
+GET http://localhost:5000/api/company HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY2NzY3NzE2NmQ0NmI1YTUxMjdjZjciLCJyb2xlIjoiY29tcGFueSIsImlhdCI6MTc1MTU0NTYyMiwiZXhwIjoxNzUxNTg4ODIyfQ.GsMPdUqe-V_oVks_IW1iDKIPDvyf-bqCeLfd42LtRYs
+
+###
+PATCH http://localhost:5000/api/company/68664a421b81a9db6b893d92 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY2M2M0MTE4ZWZkOGI5M2JjNjUyZGUiLCJyb2xlIjoiY29tcGFueSIsImlhdCI6MTc1MTUzMzI5OSwiZXhwIjoxNzUxNTQwNDk5fQ.60kegCxykd-LX9-z9zeJttkNdJyoC2KurEf67FNiuS4
+
+{
+  "title": "Junior Developer"
+
+}
+
+###
+DELETE http://localhost:5000/api/company/68665431a7c94f45774f5960 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY2M2M0MTE4ZWZkOGI5M2JjNjUyZGUiLCJyb2xlIjoiY29tcGFueSIsImlhdCI6MTc1MTUzMzI5OSwiZXhwIjoxNzUxNTQwNDk5fQ.60kegCxykd-LX9-z9zeJttkNdJyoC2KurEf67FNiuS4
+
+###
+GET http://localhost:5000/api/applicant HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY2Mzg2MjE4ZWZkOGI5M2JjNjUyZDUiLCJyb2xlIjoiYXBwbGljYW50IiwiaWF0IjoxNzUxNTQyNDAyLCJleHAiOjE3NTE1NDk2MDJ9.mE5Y6oKDn89Fit3FP077QPXI-KtjnaqbPk1ehX2c41s
+
+###
+GET http://localhost:5000/api/applicant/filter?title=ReAct HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY2Mzg2MjE4ZWZkOGI5M2JjNjUyZDUiLCJyb2xlIjoiYXBwbGljYW50IiwiaWF0IjoxNzUxNTQyNDAyLCJleHAiOjE3NTE1NDk2MDJ9.mE5Y6oKDn89Fit3FP077QPXI-KtjnaqbPk1ehX2c41s
+
+###
+POST http://localhost:5000/api/applicant/apply/686676bf166d46b5a5127cfb HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY2Mzg2MjE4ZWZkOGI5M2JjNjUyZDUiLCJyb2xlIjoiYXBwbGljYW50IiwiaWF0IjoxNzUxNTQyNDAyLCJleHAiOjE3NTE1NDk2MDJ9.mE5Y6oKDn89Fit3FP077QPXI-KtjnaqbPk1ehX2c41s
 
 

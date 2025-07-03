@@ -47,7 +47,7 @@ Hinweis: Wir sehen die Cookies und dadurch auch das JWT nicht! Aber VS- Code spe
 2. updateJob (single)
 3. deleteJob (single)
 4. showJobs (all)
-   - Bei den angezeigten Jobs soll der Username und die E-Mail Adresse der Bewerber zu sehen sein
+   - Bei den angezeigten Jobs soll der Username und die E-Mail Adresse der Bewerber zu sehen sein ------check
    - Das ganze soll über die UserID geladen werden!
 
 ## Stellenanzeigen (User)

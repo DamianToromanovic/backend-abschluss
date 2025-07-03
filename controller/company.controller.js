@@ -8,9 +8,13 @@ export const getJobs = async (req, res) => {
   }
 
   try {
-    const allJobs = await Job.find({ companyId: userId });
+    const allJobs = await Job.find({ companyId: userId }).populate(
+      "applicants",
+      "name email"
+    );
     res.status(201).json(allJobs);
   } catch (error) {
+    console.error("Fehler beim Holen der Jobs:", error);
     res.status(500).json({ message: "getting jobs failed" });
   }
 };
@@ -64,11 +68,12 @@ export const updateJob = async (req, res) => {
     dataToUpdate.shortDescription = shortDescription;
 
   try {
-    const updatedJob = await Job.findOneAndUpdate(
+    const updatedJob = await Job.findByIdAndUpdate(
       { companyId: userId },
-      dataToUpdate
+      dataToUpdate,
+      { new: true }
     );
-    res.status(201).json(updateJob);
+    res.status(201).json(updatedJob);
   } catch (error) {
     res.status(500).json({ message: "updating job failed" });
   }

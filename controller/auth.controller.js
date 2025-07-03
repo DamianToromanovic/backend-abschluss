@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
+
 import { generateToken } from "../middleware/auth.middleware.js";
 import User from "../models/userSchema.js";
 
@@ -10,6 +10,18 @@ export const registerUser = async (req, res) => {
 
     if (!name || !email || !password) {
       res.status(400).json({ error: "Alle Felder sind erforderlich." });
+      return;
+    }
+    if (
+      password.length < 10 ||
+      !password.match(/[A-Z]/) ||
+      !password.match(/[a-z]/) ||
+      !password.match(/[\W_]/)
+    ) {
+      res.status(400).json({
+        error:
+          "The password should be at least 10 characters long, contain at least one uppercase letter, one lowercase letter, and one special character.",
+      });
       return;
     }
 
@@ -25,14 +37,12 @@ export const registerUser = async (req, res) => {
     const hashedPW = await bcrypt.hash(password, saltRounds);
 
     const user = await User.create({
-      name,
+      name: name.trim(),
       email,
       password: hashedPW,
       role,
       contactPerson,
     });
-
-    const verificationToken = generateToken(user, "30m");
 
     res.status(201).json({
       message: "Registrierung erfolgreich.",
@@ -40,41 +50,6 @@ export const registerUser = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Registration Error" });
-  }
-};
-
-export const verifyUser = async (req, res, next) => {
-  const { token } = req.query;
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    if (!decoded || !decoded.userID) {
-      res.status(403).json({ error: "Ungültiges Token." });
-      return;
-    }
-    const user = await User.findByIdAndUpdate(
-      decoded.userID,
-      { role: "user" },
-      { new: true }
-    );
-
-    if (!user) {
-      res.status(404).json({ error: "User not found." });
-      return;
-    }
-
-    const newToken = generateToken(user);
-
-    res.cookie("token", newToken, {
-      httpOnly: true,
-      secure: true,
-      sameSite: "lax",
-      maxAge: 2 * 60 * 60 * 1000,
-    });
-    res.status(200).json({
-      message: "E-Mail erfolgreich verifiziert.",
-    });
-  } catch (error) {
-    next(error);
   }
 };
 
@@ -95,9 +70,6 @@ export const loginUser = async (req, res) => {
 
   const user = userFromDB.toObject();
   delete user.password;
-  delete user.__v;
-  delete user.id;
-  console.log(user);
 
   // jwt
   const userToken = generateToken(user);
