@@ -1,18 +1,19 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { generateToken } from "../middleware/auth.middleware.js";
+import User from "../models/userSchema.js";
 
 export const registerUser = async (req, res) => {
   try {
     const { name, password, role, contactPerson } = req.body;
-    const email = req.body.trim().toLowerCase();
+    const email = req.body.email?.trim().toLowerCase();
 
     if (!name || !email || !password) {
       res.status(400).json({ error: "Alle Felder sind erforderlich." });
       return;
     }
 
-    const existingUser = await UserModel.findOne({
+    const existingUser = await User.findOne({
       email,
     });
     if (existingUser) {
@@ -23,7 +24,7 @@ export const registerUser = async (req, res) => {
     const saltRounds = 12;
     const hashedPW = await bcrypt.hash(password, saltRounds);
 
-    const user = await UserModel.create({
+    const user = await User.create({
       name,
       email,
       password: hashedPW,
@@ -50,7 +51,7 @@ export const verifyUser = async (req, res, next) => {
       res.status(403).json({ error: "Ungültiges Token." });
       return;
     }
-    const user = await UserModel.findByIdAndUpdate(
+    const user = await User.findByIdAndUpdate(
       decoded.userID,
       { role: "user" },
       { new: true }
@@ -80,19 +81,18 @@ export const verifyUser = async (req, res, next) => {
 export const loginUser = async (req, res) => {
   const { email, password, authMethod } = req.body;
 
-  // in einem select können nur positive Felder stehen .select("username +passwort")
-  // oder nur negativ .select("-email -username")
-  const userFromDB = await UserModel.findOne({ email: email }).select(
-    "+password"
-  );
+  const userFromDB = await User.findOne({ email: email }).select("+password");
+  if (!userFromDB) {
+    res.status(401).json({ error: "Email oder Passwort falsch" });
+    return;
+  }
 
   const isLogedIn = await bcrypt.compare(password, userFromDB.password);
 
   if (!isLogedIn) {
-    return res.status(402).json({ error: "Email oder Passwort falsch" });
+    return res.status(401).json({ error: "Email oder Passwort falsch" });
   }
 
-  // const user = userFromDB.toObject({ virtuals: false });
   const user = userFromDB.toObject();
   delete user.password;
   delete user.__v;
