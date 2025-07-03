@@ -22,13 +22,18 @@ Content-Type: application/json
 ###
 POST http://localhost:5000/api/company HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY2NzY3NzE2NmQ0NmI1YTUxMjdjZjciLCJyb2xlIjoiY29tcGFueSIsImlhdCI6MTc1MTU0NTQ2NywiZXhwIjoxNzUxNTg4NjY3fQ.v9uQadOd-Ih5C_R3ZkMfEWuwJtyJuPj_43274OD1Ic8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY2NzY3NzE2NmQ0NmI1YTUxMjdjZjciLCJyb2xlIjoiY29tcGFueSIsImlhdCI6MTc1MTU0OTE3OCwiZXhwIjoxNzUxNTkyMzc4fQ.ULXS9IU8_wnDucQiOZSLL9gxW4IMOBgzDFt7Hu0ORzA
 
 {
-  "title": "React Developer",
-  "shortDescription": "We are looking for a Frontend Developer to join our team.",
-  "longDescription": "As a Frontend Developer, you will be responsible for building user interfaces and ensuring a seamless user experience. You will work closely with designers and backend developers to create responsive and interactive web applications.",
-  "skills": ["JavaScript", "React", "HTML", "CSS"],
+  "title": "Cloud Engineer",
+  "shortDescription": "We are looking for Cloud Engineer to join our team.",
+  "longDescription": "As a Cloud Engineer, you will be responsible for designing, implementing, and managing cloud-based solutions. You will work closely with our development team to ensure that our applications are scalable, secure, and highly available.",
+  "skills": [
+    "AWS",
+    "Azure",
+    "Docker",
+    "Kubernetes"
+  ],
   "offers": ["Remote work", "Health insurance", "Gym membership"]
 }
 
