@@ -69,7 +69,7 @@ export const updateJob = async (req, res) => {
 
   try {
     const jobToUpdate = await Job.findByIdAndUpdate(
-      { companyId: userId },
+      { _id: jobId },
       dataToUpdate,
       { new: true }
     );

@@ -6,17 +6,17 @@ POST http://localhost:5000/api/auth/register HTTP/1.1
 Content-Type: application/json
 
 {
-  "name": "Company 4",
+  "name": "User1",
   "password": "Abcdeddd52621!!!!",
   "role": "company",
-  "email": "company4@web.de" 
+  "email": "user1@web.de" 
 }
 ###
 POST http://localhost:5000/api/auth/login HTTP/1.1
 Content-Type: application/json
 
 {
-  "email": "company4@web.de",
+  "email": "user1@web.de",
   "password": "Abcdeddd52621!!!!"
 }
 ###
@@ -25,17 +25,24 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY2NzY3NzE2NmQ0NmI1YTUxMjdjZjciLCJyb2xlIjoiY29tcGFueSIsImlhdCI6MTc1MTU0OTE3OCwiZXhwIjoxNzUxNTkyMzc4fQ.ULXS9IU8_wnDucQiOZSLL9gxW4IMOBgzDFt7Hu0ORzA
 
 {
-  "title": "Cloud Engineer",
-  "shortDescription": "We are looking for Cloud Engineer to join our team.",
-  "longDescription": "As a Cloud Engineer, you will be responsible for designing, implementing, and managing cloud-based solutions. You will work closely with our development team to ensure that our applications are scalable, secure, and highly available.",
+  "title": "Python Developer",
+  "shortDescription": "We are looking for a skilled Python Developer to join our backend team.",
+  "longDescription": "As a Python Developer, you will be responsible for developing, testing, and maintaining scalable backend systems and APIs. You will collaborate with data scientists and frontend developers to deliver reliable and efficient solutions, primarily using Django or Flask.",
   "skills": [
-    "AWS",
-    "Azure",
-    "Docker",
-    "Kubernetes"
+    "Python",
+    "Django",
+    "Flask",
+    "REST APIs",
+    "PostgreSQL"
   ],
-  "offers": ["Remote work", "Health insurance", "Gym membership"]
+  "offers": [
+    "Flexible working hours",
+    "Remote-first culture",
+    "Professional development budget",
+    "Annual team retreat"
+  ]
 }
+
 
 ###
 GET http://localhost:5000/api/company HTTP/1.1
@@ -43,12 +50,12 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY2NzY3NzE2NmQ0NmI1YTUxMjdjZjciLCJyb2xlIjoiY29tcGFueSIsImlhdCI6MTc1MTU0NTYyMiwiZXhwIjoxNzUxNTg4ODIyfQ.GsMPdUqe-V_oVks_IW1iDKIPDvyf-bqCeLfd42LtRYs
 
 ###
-PATCH http://localhost:5000/api/company/68664a421b81a9db6b893d92 HTTP/1.1
+PATCH http://localhost:5000/api/company/686676bf166d46b5a5127cfb HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY2M2M0MTE4ZWZkOGI5M2JjNjUyZGUiLCJyb2xlIjoiY29tcGFueSIsImlhdCI6MTc1MTUzMzI5OSwiZXhwIjoxNzUxNTQwNDk5fQ.60kegCxykd-LX9-z9zeJttkNdJyoC2KurEf67FNiuS4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY2NzY3NzE2NmQ0NmI1YTUxMjdjZjciLCJyb2xlIjoiY29tcGFueSIsImlhdCI6MTc1MTU0OTE3OCwiZXhwIjoxNzUxNTkyMzc4fQ.ULXS9IU8_wnDucQiOZSLL9gxW4IMOBgzDFt7Hu0ORzA
 
 {
-  "title": "Junior Developer"
+  "title": "Senior React Developer"
 
 }
 
@@ -60,16 +67,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY2M
 ###
 GET http://localhost:5000/api/applicant HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY2Mzg2MjE4ZWZkOGI5M2JjNjUyZDUiLCJyb2xlIjoiYXBwbGljYW50IiwiaWF0IjoxNzUxNTQyNDAyLCJleHAiOjE3NTE1NDk2MDJ9.mE5Y6oKDn89Fit3FP077QPXI-KtjnaqbPk1ehX2c41s
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY2ODdjMjEyMmFmNzAyOWUwOGUwYzYiLCJyb2xlIjoiY29tcGFueSIsImlhdCI6MTc1MTU0OTg5MiwiZXhwIjoxNzUxNTkzMDkyfQ.-Q8xoN25iovf59Rxl5V3wsP6Fe8NRvZgG2_4MTWRlL4
 
 ###
 GET http://localhost:5000/api/applicant/filter?title=ReAct HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY2Mzg2MjE4ZWZkOGI5M2JjNjUyZDUiLCJyb2xlIjoiYXBwbGljYW50IiwiaWF0IjoxNzUxNTQyNDAyLCJleHAiOjE3NTE1NDk2MDJ9.mE5Y6oKDn89Fit3FP077QPXI-KtjnaqbPk1ehX2c41s
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY2ODdjMjEyMmFmNzAyOWUwOGUwYzYiLCJyb2xlIjoiY29tcGFueSIsImlhdCI6MTc1MTU0OTg5MiwiZXhwIjoxNzUxNTkzMDkyfQ.-Q8xoN25iovf59Rxl5V3wsP6Fe8NRvZgG2_4MTWRlL4
 
 ###
 POST http://localhost:5000/api/applicant/apply/686676bf166d46b5a5127cfb HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY2Mzg2MjE4ZWZkOGI5M2JjNjUyZDUiLCJyb2xlIjoiYXBwbGljYW50IiwiaWF0IjoxNzUxNTQyNDAyLCJleHAiOjE3NTE1NDk2MDJ9.mE5Y6oKDn89Fit3FP077QPXI-KtjnaqbPk1ehX2c41s
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY2ODdjMjEyMmFmNzAyOWUwOGUwYzYiLCJyb2xlIjoiY29tcGFueSIsImlhdCI6MTc1MTU0OTg5MiwiZXhwIjoxNzUxNTkzMDkyfQ.-Q8xoN25iovf59Rxl5V3wsP6Fe8NRvZgG2_4MTWRlL4
 
 
